@@ -1,0 +1,13 @@
+{
+  "name": "eslint-plugin-custom",
+  "version": "1.0.0",
+  "module": "index.js",
+  "author": "Morpho Association <contact@morpho.org>",
+  "license": "MIT",
+  "dependencies": {
+    "keccak": "^3.0.3"
+  },
+  "peerDependencies": {
+    "eslint": "^8.46.0"
+  }
+}

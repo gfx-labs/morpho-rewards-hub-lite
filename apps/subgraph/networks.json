@@ -1,0 +1,64 @@
+{
+  "mainnet": {
+    "Morpho": {
+      "address": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "startBlock": 18883124
+    },
+    "VaultFactory": {
+      "address": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "startBlock": 18925584
+    },
+    "VaultFactoryV1_1": {
+      "address": "0x1897A8997241C1cD4bD0698647e4EB7213535c24",
+      "startBlock": 21439510
+    },
+    "URDFactory": {
+      "address": "0x9baA51245CDD28D8D74Afe8B3959b616E9ee7c8D",
+      "startBlock": 18885106
+    },
+    "EmissionDataProvider": {
+      "address": "0xf27fa85b6748c8a64d4b0d3d6083eb26f18bde8e",
+      "startBlock": 18940296
+    },
+    "MarketRewardsProgramRegistry": {
+      "address": "0x5148bF15bb722E1854F66430Bc9FeD0E9FDaCE7D",
+      "startBlock": 19349967
+    }
+  },
+  "base": {
+    "Morpho": {
+      "address": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "startBlock": 13977148
+    },
+    "VaultFactory": {
+      "address": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "startBlock": 13978134
+    },
+    "VaultFactoryV1_1": {
+      "address": "0xFf62A7c278C62eD665133147129245053Bbf5918",
+      "startBlock": 23928808
+    },
+    "URDFactory": {
+      "address": "0x7276454fc1cf9C408deeed722fd6b5E7A4CA25D8",
+      "startBlock": 13978782
+    },
+    "EmissionDataProvider": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "startBlock": 13977148
+    },
+    "MarketRewardsProgramRegistry": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "startBlock": 13977148
+    }
+  },
+  "base-sepolia": {
+    "Morpho": {
+      "address": "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb",
+      "startBlock": 9304957
+    },
+    "VaultFactory": {
+      "address": "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101",
+      "startBlock": 9315415
+    }
+  }
+}

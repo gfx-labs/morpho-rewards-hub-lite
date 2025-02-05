@@ -1,0 +1,46 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Setup Node CI
+        uses: ./.github/actions/setup-node
+
+      - name: Lint Code
+        run: yarn lint
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+      - name: Setup Node CI
+        uses: ./.github/actions/setup-node
+
+      - name: Typecheck Code
+        run: yarn typecheck
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: Setup Node CI
+        uses: ./.github/actions/setup-node
+
+      - name: build
+        run: yarn build

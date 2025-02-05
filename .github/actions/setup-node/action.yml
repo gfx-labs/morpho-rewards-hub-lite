@@ -1,0 +1,23 @@
+name: Setup Node
+description: Setup node and install dependencies with caching
+
+inputs:
+  lockfile:
+    description: The lockfile to use
+    default: yarn.lock
+
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # V4.0.1
+      with:
+        node-version-file: .nvmrc
+        cache: yarn
+        cache-dependency-path: ${{ inputs.lockfile }}
+
+    - name: Install dependencies
+      shell: bash
+      run: yarn install --immutable
+      env:
+        CYPRESS_INSTALL_BINARY: "0"

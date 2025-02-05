@@ -1,0 +1,246 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Morpho
+    network: mainnet
+    source:
+      abi: Morpho
+      address: "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb"
+      startBlock: 18883124
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MorphoAccrueInterest
+        - MorphoBorrow
+        - MorphoCreateMarket
+        - MorphoEnableIrm
+        - MorphoEnableLltv
+        - MorphoFlashLoan
+        - MorphoIncrementNonce
+        - MorphoLiquidate
+        - MorphoRepay
+        - MorphoSetAuthorization
+        - MorphoSetFee
+        - MorphoSetFeeRecipient
+        - MorphoSetOwner
+        - MorphoSupply
+        - MorphoSupplyCollateral
+        - MorphoWithdraw
+        - MorphoWithdrawCollateral
+      abis:
+        - name: Morpho
+          file: ./abis/Morpho.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: Vault
+          file: ./abis/Vault.json
+      eventHandlers:
+        - event: AccrueInterest(indexed bytes32,uint256,uint256,uint256)
+          handler: handleAccrueInterest
+        - event: Borrow(indexed bytes32,address,indexed address,indexed
+            address,uint256,uint256)
+          handler: handleBorrow
+        - event: CreateMarket(indexed bytes32,(address,address,address,address,uint256))
+          handler: handleCreateMarket
+        - event: Liquidate(indexed bytes32,indexed address,indexed
+            address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleLiquidate
+        - event: Repay(indexed bytes32,indexed address,indexed address,uint256,uint256)
+          handler: handleRepay
+        - event: Supply(indexed bytes32,indexed address,indexed address,uint256,uint256)
+          handler: handleSupply
+        - event: SupplyCollateral(indexed bytes32,indexed address,indexed address,uint256)
+          handler: handleSupplyCollateral
+        - event: Withdraw(indexed bytes32,address,indexed address,indexed
+            address,uint256,uint256)
+          handler: handleWithdraw
+        - event: WithdrawCollateral(indexed bytes32,address,indexed address,indexed
+            address,uint256)
+          handler: handleWithdrawCollateral
+        - event: SetFeeRecipient(indexed address)
+          handler: handleSetFeeRecipient
+      file: ./src/handlers/morpho.ts
+  - kind: ethereum
+    name: VaultFactory
+    network: mainnet
+    source:
+      abi: VaultFactory
+      address: "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101"
+      startBlock: 18925584
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - VaultFactoryCreateVault
+      abis:
+        - name: VaultFactory
+          file: ./abis/VaultFactory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: Vault
+          file: ./abis/Vault.json
+      eventHandlers:
+        - event: CreateMetaMorpho(indexed address,indexed address,address,uint256,indexed
+            address,string,string,bytes32)
+          handler: handleCreateVault
+      file: ./src/handlers/vault-factory.ts
+  - kind: ethereum
+    name: VaultFactoryV1_1
+    network: mainnet
+    source:
+      abi: VaultFactory
+      address: "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101"
+      startBlock: 18925584
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - VaultFactoryCreateVault
+      abis:
+        - name: VaultFactory
+          file: ./abis/VaultFactory.json
+        - name: ERC20
+          file: ./abis/ERC20.json
+        - name: Vault
+          file: ./abis/Vault.json
+      eventHandlers:
+        - event: CreateMetaMorpho(indexed address,indexed address,address,uint256,indexed
+            address,string,string,bytes32)
+          handler: handleCreateVault
+      file: ./src/handlers/vault-factory.ts
+  - kind: ethereum
+    name: URDFactory
+    network: mainnet
+    source:
+      abi: URDFactory
+      address: "0x9baA51245CDD28D8D74Afe8B3959b616E9ee7c8D"
+      startBlock: 18885106
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - UrdCreated
+      abis:
+        - name: URDFactory
+          file: ./abis/URDFactory.json
+      eventHandlers:
+        - event: UrdCreated(indexed address,indexed address,indexed
+            address,uint256,bytes32,bytes32,bytes32)
+          handler: handleUrdCreated
+      file: ./src/handlers/urd-factory.ts
+  - kind: ethereum
+    name: EmissionDataProvider
+    network: mainnet
+    source:
+      abi: EmissionDataProvider
+      address: "0xf27fa85b6748c8a64d4b0d3d6083eb26f18bde8e"
+      startBlock: 18940296
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RewardsEmissionSet
+      abis:
+        - name: EmissionDataProvider
+          file: ./abis/EmissionDataProvider.json
+      eventHandlers:
+        - event: RewardsEmissionSet(indexed address,indexed bytes32,indexed
+            address,address,(uint256,uint256,uint256))
+          handler: handleEmission
+      file: ./src/handlers/reward-program.ts
+  - kind: ethereum
+    name: MarketRewardsProgramRegistry
+    network: mainnet
+    source:
+      abi: MarketRewardsProgramRegistry
+      address: "0x5148bF15bb722E1854F66430Bc9FeD0E9FDaCE7D"
+      startBlock: 19349967
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ProgramRegistered
+      abis:
+        - name: MarketRewardsProgramRegistry
+          file: ./abis/MarketRewardsProgramRegistry.json
+      eventHandlers:
+        - event: ProgramRegistered(indexed address,indexed bytes32,indexed
+            address,address,(uint256,uint256,uint256,uint256,uint256))
+          handler: handleMarketRewardsProgramRegistered
+      file: ./src/handlers/reward-program.ts
+templates:
+  - kind: ethereum
+    name: Vault
+    network: mainnet
+    source:
+      abi: Vault
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AccrueInterest
+        - Deposit
+        - Transfer
+        - Withdraw
+        - SetFeeRecipient
+      abis:
+        - name: Vault
+          file: ./abis/Vault.json
+      eventHandlers:
+        - event: AccrueInterest(uint256,uint256)
+          handler: handleAccrueInterest
+        - event: Deposit(indexed address,indexed address,uint256,uint256)
+          handler: handleDeposit
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleWithdraw
+        - event: SetFeeRecipient(indexed address)
+          handler: handleSetFeeRecipient
+      file: ./src/handlers/vault.ts
+  - kind: ethereum
+    name: URD
+    network: mainnet
+    source:
+      abi: URD
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Claimed
+        - OwnerSet
+        - PendingRootRevoked
+        - PendingRootSet
+        - RootSet
+        - RootUpdaterSet
+        - TimelockSet
+      abis:
+        - name: URD
+          file: ./abis/URD.json
+      eventHandlers:
+        - event: Claimed(indexed address,indexed address,uint256)
+          handler: handleClaimed
+        - event: OwnerSet(indexed address)
+          handler: handleOwnerSet
+        - event: PendingRootRevoked(indexed address)
+          handler: handlePendingRootRevoked
+        - event: PendingRootSet(indexed address,indexed bytes32,indexed bytes32)
+          handler: handlePendingRootSet
+        - event: RootSet(indexed bytes32,indexed bytes32)
+          handler: handleRootSet
+        - event: RootUpdaterSet(indexed address,bool)
+          handler: handleRootUpdaterSet
+        - event: TimelockSet(uint256)
+          handler: handleTimelockSet
+      file: ./src/handlers/urd.ts

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "SUBGRAPH_MAINNET",
+    "SUBGRAPH_BASE",
+    "SUBGRAPH_MAINNET_KILN",
+    "MAINNET_RPC_URL",
+    "BASE_RPC_URL",
+    "DATABASE_URL",
+    "PRICE_API_URL",
+    "AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY",
+    "AWS_REGION"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build", "typecheck"],
+      "outputs": ["lib/**"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": ["$TURBO_DEFAULT$"]
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "outputs": ["$TURBO_DEFAULT$"]
+    }
+  },
+  "globalDependencies": ["tsconfig.json"]
+}

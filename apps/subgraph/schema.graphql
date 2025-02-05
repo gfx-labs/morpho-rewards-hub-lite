@@ -1,0 +1,203 @@
+enum EventType {
+  SUPPLY
+  BORROW
+  COLLATERAL
+  ACCRUE_INTEREST
+}
+
+type MorphoFeeRecipient @entity {
+  "Empty bytes"
+  id: Bytes!
+  feeRecipient: User!
+}
+
+type MorphoTx @entity {
+  id: Bytes!
+
+  type: EventType!
+  user: User!
+  market: Market!
+  shares: BigInt!
+  assets: BigInt!
+  timestamp: BigInt!
+
+  # Additional information
+  txHash: Bytes!
+  txIndex: BigInt!
+  logIndex: BigInt!
+  blockNumber: BigInt!
+}
+
+type VaultTx @entity {
+  id: Bytes!
+
+  vault: Vault!
+  user: User!
+  position: VaultPosition!
+  shares: BigInt!
+  assets: BigInt!
+  timestamp: BigInt!
+
+  # Additional information
+  txHash: Bytes!
+  txIndex: BigInt!
+  logIndex: BigInt!
+  blockNumber: BigInt!
+}
+
+type User @entity {
+  id: Bytes!
+
+  morphoTxs: [MorphoTx!]! @derivedFrom(field: "user")
+  positions: [Position!]! @derivedFrom(field: "user")
+
+  vaultFeeRecipients: [MorphoFeeRecipient!]! @derivedFrom(field: "feeRecipient")
+  vaultPositions: [VaultPosition!]! @derivedFrom(field: "user")
+  vaultTxs: [VaultTx!]! @derivedFrom(field: "user")
+}
+
+type Market @entity {
+  id: Bytes!
+
+  loanToken: Bytes!
+  collateralToken: Bytes!
+
+  totalSupplyShares: BigInt!
+  totalSupplyAssets: BigInt!
+  totalBorrowShares: BigInt!
+  totalBorrowAssets: BigInt!
+  totalCollateral: BigInt!
+
+  morphoTxs: [MorphoTx!]! @derivedFrom(field: "market")
+  positions: [Position!]! @derivedFrom(field: "market")
+}
+
+type MarketSnapshot @entity {
+  "{market id}-{timestamp}"
+  id: String!
+
+  market: Market!
+
+  totalSupplyShares: BigInt!
+  totalSupplyAssets: BigInt!
+  totalBorrowShares: BigInt!
+  totalBorrowAssets: BigInt!
+  totalCollateral: BigInt!
+
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type Position @entity {
+  "concat of the user address and the market id"
+  id: Bytes!
+  user: User!
+  market: Market!
+  supplyShares: BigInt!
+  borrowShares: BigInt!
+  collateral: BigInt!
+}
+
+type PositionSnapshot @entity {
+  "{user address}{market id}-{timestamp}"
+  id: String!
+  position: Position!
+  user: User!
+  marketSnapshot: MarketSnapshot!
+  supplyShares: BigInt!
+  borrowShares: BigInt!
+  collateral: BigInt!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type Vault @entity {
+  id: Bytes!
+
+  # address of the asset supplied by the user to the vault
+  asset: Bytes!
+
+  totalShares: BigInt!
+  totalAssets: BigInt!
+
+  feeRecipient: User
+
+  vaultTxs: [VaultTx!]! @derivedFrom(field: "vault")
+  positions: [VaultPosition!]! @derivedFrom(field: "vault")
+}
+
+type VaultSnapshot @entity {
+  "{vault id}-{timestamp}"
+  id: String!
+
+  vault: Vault!
+
+  totalShares: BigInt!
+  totalAssets: BigInt!
+
+  feeRecipient: User
+
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type VaultPosition @entity {
+  id: Bytes!
+
+  vault: Vault!
+
+  user: User!
+
+  shares: BigInt!
+
+  vaultTxs: [VaultTx!]! @derivedFrom(field: "position")
+}
+
+type VaultPositionSnapshot @entity {
+  "{user address}{vault id}-{timestamp}"
+  id: String!
+
+  vaultSnapshot: VaultSnapshot!
+
+  user: User!
+
+  shares: BigInt!
+
+  timestamp: BigInt!
+  blockNumber: BigInt!
+}
+
+type Urd @entity {
+  # address URD contract
+  id: Bytes!
+
+  creator: Bytes!
+  owner: Bytes!
+  # reward programs distributed by the URD
+  rewardPrograms: [RewardProgram!]! @derivedFrom(field: "urd")
+}
+
+type RewardProgram @entity {
+  # concat(sender, urd, rewardToken, market, logId)
+  # only used to identify changes for a given reward program
+  id: Bytes!
+
+  # programId in the contract
+  # concat(sender, urd, rewardToken, market, logId)
+  programId: Bytes!
+
+  sender: Bytes!
+  urd: Urd!
+  rewardToken: Bytes!
+  market: Market!
+  marketSnapshot: MarketSnapshot!
+
+  annualSupplyRate: BigInt!
+  annualBorrowRate: BigInt!
+  annualCollateralRate: BigInt!
+  registrationTimestamp: BigInt!
+
+  #optional fields for first reward programs
+  startTimestamp: BigInt
+  endTimestamp: BigInt
+}

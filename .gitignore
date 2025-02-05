@@ -1,0 +1,120 @@
+# IDE
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# dependencies
+node_modules
+
+lib
+
+# testing
+coverage
+sandbox.test.ts
+.nyc_output
+.mp4
+
+# production
+build
+dist
+lib
+.turbo
+*.tsbuildinfo
+packages/**/lib
+sdks/**/lib
+apps/**/lib
+apps/**/.esbuild
+apps/**/.serverless
+apps/**/__generated__/prisma
+
+# misc
+.DS_Store
+*.env*
+!*.env.example*
+!*.env.test
+*.pem
+stats-*.json
+**/disk-store
+
+
+# debug
+cache
+*.cli
+*.log*
+
+# yarn
+.pnp.*
+.yarn/**
+install-state.gz
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+
+# auto generated files
+manifest.json
+!**/public/manifest.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+tmp
+
+# Local
+local_*
+
+# Cypress
+**/cypress/videos
+**/cypress/screenshots
+
+# Local Netlify folder
+.netlify
+
+node_modules
+generated
+build
+
+# tests
+.bin
+.latest.json
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform variables
+*.tfvars
+*.tfvars.json
+
+# Terraform plan files
+*.tfplan
+
+# Crash logs
+crash.log
+
+# Terraform configuration overrides
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform cache directory
+.terraform/
+.terraform.lock.hcl
+
+# Sensitive environment-specific files
+.env
+
+cookies
+daemon

@@ -1,0 +1,191 @@
+[
+  {
+    "type": "function",
+    "name": "MAX_PROGRAMS_WITH_SAME_ID",
+    "inputs": [],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getNumberOfProgramsForId",
+    "inputs": [{ "name": "id", "type": "bytes32", "internalType": "bytes32" }],
+    "outputs": [{ "name": "", "type": "uint256", "internalType": "uint256" }],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getPrograms",
+    "inputs": [
+      { "name": "caller", "type": "address", "internalType": "address" },
+      { "name": "urd", "type": "address", "internalType": "address" },
+      { "name": "rewardToken", "type": "address", "internalType": "address" },
+      { "name": "market", "type": "bytes32", "internalType": "Id" }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "internalType": "struct MarketRewardsProgram[]",
+        "components": [
+          {
+            "name": "supplyRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "borrowRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "collateralRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          { "name": "start", "type": "uint256", "internalType": "uint256" },
+          { "name": "end", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "multicall",
+    "inputs": [
+      { "name": "data", "type": "bytes[]", "internalType": "bytes[]" }
+    ],
+    "outputs": [
+      { "name": "results", "type": "bytes[]", "internalType": "bytes[]" }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "programs",
+    "inputs": [
+      { "name": "id", "type": "bytes32", "internalType": "bytes32" },
+      { "name": "", "type": "uint256", "internalType": "uint256" }
+    ],
+    "outputs": [
+      {
+        "name": "supplyRewardTokensPerYear",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "borrowRewardTokensPerYear",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "collateralRewardTokensPerYear",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      { "name": "start", "type": "uint256", "internalType": "uint256" },
+      { "name": "end", "type": "uint256", "internalType": "uint256" }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "register",
+    "inputs": [
+      { "name": "urd", "type": "address", "internalType": "address" },
+      { "name": "rewardToken", "type": "address", "internalType": "address" },
+      { "name": "market", "type": "bytes32", "internalType": "Id" },
+      {
+        "name": "program",
+        "type": "tuple",
+        "internalType": "struct MarketRewardsProgram",
+        "components": [
+          {
+            "name": "supplyRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "borrowRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "collateralRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          { "name": "start", "type": "uint256", "internalType": "uint256" },
+          { "name": "end", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "ProgramRegistered",
+    "inputs": [
+      {
+        "name": "rewardToken",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "market",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "Id"
+      },
+      {
+        "name": "sender",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "urd",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "program",
+        "type": "tuple",
+        "indexed": false,
+        "internalType": "struct MarketRewardsProgram",
+        "components": [
+          {
+            "name": "supplyRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "borrowRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "collateralRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          { "name": "start", "type": "uint256", "internalType": "uint256" },
+          { "name": "end", "type": "uint256", "internalType": "uint256" }
+        ]
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "AddressEmptyCode",
+    "inputs": [
+      { "name": "target", "type": "address", "internalType": "address" }
+    ]
+  },
+  { "type": "error", "name": "FailedInnerCall", "inputs": [] }
+]

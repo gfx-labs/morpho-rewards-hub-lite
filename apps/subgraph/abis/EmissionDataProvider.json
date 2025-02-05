@@ -1,0 +1,180 @@
+[
+  {
+    "type": "function",
+    "name": "multicall",
+    "inputs": [
+      {
+        "name": "data",
+        "type": "bytes[]",
+        "internalType": "bytes[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "results",
+        "type": "bytes[]",
+        "internalType": "bytes[]"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "rewardsEmissions",
+    "inputs": [
+      {
+        "name": "sender",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "urd",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "rewardToken",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "marketId",
+        "type": "bytes32",
+        "internalType": "Id"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "supplyRewardTokensPerYear",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "borrowRewardTokensPerYear",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "collateralRewardTokensPerYear",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "setRewardsEmission",
+    "inputs": [
+      {
+        "name": "rewardToken",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "urd",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "market",
+        "type": "bytes32",
+        "internalType": "Id"
+      },
+      {
+        "name": "rewardsEmission",
+        "type": "tuple",
+        "internalType": "struct RewardsEmission",
+        "components": [
+          {
+            "name": "supplyRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "borrowRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "collateralRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "RewardsEmissionSet",
+    "inputs": [
+      {
+        "name": "rewardToken",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "market",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "Id"
+      },
+      {
+        "name": "sender",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "urd",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "rewardsEmission",
+        "type": "tuple",
+        "indexed": false,
+        "internalType": "struct RewardsEmission",
+        "components": [
+          {
+            "name": "supplyRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "borrowRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          },
+          {
+            "name": "collateralRewardTokensPerYear",
+            "type": "uint256",
+            "internalType": "uint256"
+          }
+        ]
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "AddressEmptyCode",
+    "inputs": [
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "FailedInnerCall",
+    "inputs": []
+  }
+]
