@@ -25,7 +25,6 @@ lib
 .turbo
 *.tsbuildinfo
 packages/**/lib
-sdks/**/lib
 apps/**/lib
 apps/**/.esbuild
 apps/**/.serverless
@@ -47,14 +46,13 @@ cache
 *.log*
 
 # yarn
-.pnp.*
-.yarn/**
+.yarn/*
 install-state.gz
 !.yarn/patches
-!.yarn/plugins
 !.yarn/releases
-!.yarn/sdks
+!.yarn/plugins
 !.yarn/versions
+.pnp.*
 
 
 # auto generated files

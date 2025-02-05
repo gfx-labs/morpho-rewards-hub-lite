@@ -6,7 +6,6 @@ inputs:
     description: The lockfile to use
     default: yarn.lock
 
-
 runs:
   using: composite
   steps:
@@ -15,6 +14,14 @@ runs:
         node-version-file: .nvmrc
         cache: yarn
         cache-dependency-path: ${{ inputs.lockfile }}
+
+    - name: Enable Corepack
+      shell: bash
+      run: corepack enable
+
+    - name: Prepare Yarn
+      shell: bash
+      run: corepack prepare yarn@4.1.1 --activate
 
     - name: Install dependencies
       shell: bash

@@ -1,10 +1,9 @@
 {
-  "name": "cli",
+  "name": "@morpho-org/cli",
   "author": "Morpho Association <contact@morpho.org>",
   "packageManager": "yarn@4.1.1",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "license": "MIT",
-  "private": true,
   "type": "module",
   "main": "./lib/index.cjs",
   "module": "./lib/index.js",
@@ -20,25 +19,21 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "build": "tsup",
-    "build:cli": "turbo run build",
-    "cli:run": "tsx src/index.ts",
     "test": "vitest --run",
-    "test:cli": "turbo run test"
+    "test:morpho-prices": "turbo run test",
+    "build": "tsup",
+    "build:morpho-prices": "turbo run build"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.11.30",
     "@vitest/coverage-v8": "^3.0.2",
     "tsup": "^8.3.5",
-    "tsx": "^4.19.2",
     "turbo": "^2.3.3",
-    "typescript": "^5.4.5",
+    "typescript": "^5.1.6",
     "vitest": "^3.0.2"
   },
   "dependencies": {
-    "commander": "^12.1.0",
-    "dotenv": "^16.4.5",
-    "tslog": "^4.9.2",
+    "commander": "^13.1.0",
     "viem": "^2.22.8"
   }
 }

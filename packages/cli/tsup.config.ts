@@ -7,7 +7,6 @@ export default defineConfig({
   outDir: "lib",
   sourcemap: true,
   dts: true,
-  external: ["@pinata/sdk"],
   clean: true,
   shims: true,
 });
