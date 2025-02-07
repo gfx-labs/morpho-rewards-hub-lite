@@ -46,14 +46,14 @@ cache
 *.log*
 
 # yarn
-.yarn/*
+.pnp.*
+.yarn/**
 install-state.gz
 !.yarn/patches
-!.yarn/releases
 !.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
 !.yarn/versions
-.pnp.*
-
 
 # auto generated files
 manifest.json

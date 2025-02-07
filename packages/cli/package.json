@@ -1,5 +1,5 @@
 {
-  "name": "@morpho-org/cli",
+  "name": "cli",
   "author": "Morpho Association <contact@morpho.org>",
   "packageManager": "yarn@4.1.1",
   "version": "0.0.0",
@@ -22,18 +22,25 @@
     "test": "vitest --run",
     "test:morpho-prices": "turbo run test",
     "build": "tsup",
-    "build:morpho-prices": "turbo run build"
+    "build:morpho-prices": "turbo run build",
+    "cli": "tsx ./src/index.ts"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",
     "@vitest/coverage-v8": "^3.0.2",
     "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
     "turbo": "^2.3.3",
     "typescript": "^5.1.6",
     "vitest": "^3.0.2"
   },
   "dependencies": {
+    "@morpho-org/blue-reward-programs": "^1.4.78",
+    "@morpho-org/blue-rewards-core-sdk": "0.0.21-beta.0",
+    "@morpho-org/blue-rewards-sdk": "0.0.2",
+    "bs58": "^6.0.0",
     "commander": "^13.1.0",
+    "dotenv": "^16.4.7",
     "viem": "^2.22.8"
   }
 }

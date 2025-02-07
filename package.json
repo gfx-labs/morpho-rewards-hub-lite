@@ -1,5 +1,5 @@
 {
-  "name": "@morpho-org/rewards-hub-lite",
+  "name": "rewards-hub-lite",
   "version": "1.0.0",
   "engines": {
     "node": ">=20.11.0"
