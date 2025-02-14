@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Morpho
-    network: mainnet
+    network: base
     source:
       abi: Morpho
       address: "0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb"
-      startBlock: 18883124
+      startBlock: 13977148
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -66,11 +66,11 @@ dataSources:
       file: ./src/handlers/morpho.ts
   - kind: ethereum
     name: VaultFactory
-    network: mainnet
+    network: base
     source:
       abi: VaultFactory
       address: "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101"
-      startBlock: 18925584
+      startBlock: 13978134
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -91,11 +91,11 @@ dataSources:
       file: ./src/handlers/vault-factory.ts
   - kind: ethereum
     name: VaultFactoryV1_1
-    network: mainnet
+    network: base
     source:
       abi: VaultFactory
-      address: "0xA9c3D3a366466Fa809d1Ae982Fb2c46E5fC41101"
-      startBlock: 18925584
+      address: "0xFf62A7c278C62eD665133147129245053Bbf5918"
+      startBlock: 23928808
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -116,11 +116,11 @@ dataSources:
       file: ./src/handlers/vault-factory.ts
   - kind: ethereum
     name: URDFactory
-    network: mainnet
+    network: base
     source:
       abi: URDFactory
-      address: "0x9baA51245CDD28D8D74Afe8B3959b616E9ee7c8D"
-      startBlock: 18885106
+      address: "0x7276454fc1cf9C408deeed722fd6b5E7A4CA25D8"
+      startBlock: 13978782
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -137,11 +137,11 @@ dataSources:
       file: ./src/handlers/urd-factory.ts
   - kind: ethereum
     name: EmissionDataProvider
-    network: mainnet
+    network: base
     source:
       abi: EmissionDataProvider
-      address: "0xf27fa85b6748c8a64d4b0d3d6083eb26f18bde8e"
-      startBlock: 18940296
+      address: "0x0000000000000000000000000000000000000000"
+      startBlock: 13977148
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -158,11 +158,11 @@ dataSources:
       file: ./src/handlers/reward-program.ts
   - kind: ethereum
     name: MarketRewardsProgramRegistry
-    network: mainnet
+    network: base
     source:
       abi: MarketRewardsProgramRegistry
-      address: "0x5148bF15bb722E1854F66430Bc9FeD0E9FDaCE7D"
-      startBlock: 19349967
+      address: "0x0000000000000000000000000000000000000000"
+      startBlock: 13977148
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -180,7 +180,7 @@ dataSources:
 templates:
   - kind: ethereum
     name: Vault
-    network: mainnet
+    network: base
     source:
       abi: Vault
     mapping:
@@ -210,7 +210,7 @@ templates:
       file: ./src/handlers/vault.ts
   - kind: ethereum
     name: URD
-    network: mainnet
+    network: base
     source:
       abi: URD
     mapping:

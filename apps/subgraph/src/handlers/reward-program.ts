@@ -3,7 +3,7 @@ import { ProgramRegistered as MarketRewardsProgramRegisteredEvent } from "../../
 import { RewardProgram } from "../../generated/schema";
 import { getMarket } from "../initializers";
 import { snapshotMarket } from "../snapshots";
-import { generateLogId, hashBytes } from "../utils/index.js";
+import { generateLogId, hashBytes } from "../utils";
 
 /**
  * Handles legacy events from the EmissionDataProvider contract.

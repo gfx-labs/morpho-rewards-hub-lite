@@ -2,7 +2,7 @@ import { MorphoTx } from "../generated/schema";
 
 import { getMarket, setupPosition } from "./initializers";
 import { snapshotMarket, snapshotPosition } from "./snapshots";
-import { EventType, zeroFloorPlus } from "./utils/index.js";
+import { EventType, zeroFloorPlus } from "./utils";
 
 export function handleMorphoTx(morphoTx: MorphoTx): void {
   const market = getMarket(morphoTx.market);

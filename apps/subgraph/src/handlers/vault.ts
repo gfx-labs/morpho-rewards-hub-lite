@@ -12,7 +12,7 @@ import { MORPHO } from "../constants";
 import { handleVaultTx } from "../handleVaultTx";
 import { setupVault, setupVaultPosition, setupUser } from "../initializers";
 import { snapshotVault } from "../snapshots";
-import { generateLogId } from "../utils/index.js";
+import { generateLogId } from "../utils";
 
 export function handleAccrueInterest(event: AccrueInterestEvent): void {
   const mm = setupVault(event.address);

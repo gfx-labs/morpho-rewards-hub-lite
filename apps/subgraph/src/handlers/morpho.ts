@@ -21,7 +21,7 @@ import {
 import { handleMorphoTx } from "../handleMorphoTx";
 import { getMarket, setupUser } from "../initializers";
 import { snapshotMarket } from "../snapshots";
-import { generateLogId, EventType } from "../utils/index.js";
+import { generateLogId, EventType } from "../utils";
 
 import { handleTransferEntity } from "./vault";
 
